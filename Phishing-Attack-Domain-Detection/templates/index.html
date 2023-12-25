@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+            
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 20px;
+            margin: 5px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius:20px;
+            font-size: 15px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .malicious {
+            color: #ff0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Phishing Detection</h2>
+    <form method="post" action="/">
+        <label for="url">Enter the URL for detection:</label>
+        <input type="text" name="url" required>
+        <div><input type="submit" value="Detect"></div>
+    </form>
+
+    {% if prediction_result %}
+        <p class="malicious">Malicious Probability: {{ prediction_result }}%</p>
+        <p>There is {{ prediction_result }}% chance that the URL is malicious!</p>
+    {% endif %}
+</body>
+</html>
+
